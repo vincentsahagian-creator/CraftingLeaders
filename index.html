@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Leader Crafting — Your Diagnostic</title>
+<title>Leader Crafting - Your Diagnostic</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -17,501 +18,567 @@
     --text: #1A1A1A;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+- { margin: 0; padding: 0; box-sizing: border-box; }
 
-  body {
-    font-family: 'DM Sans', sans-serif;
-    background: var(--navy);
-    color: var(--white);
-    min-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-    position: relative;
-  }
+body {
+font-family: ‘DM Sans’, sans-serif;
+background: var(–navy);
+color: var(–white);
+min-height: 100vh;
+overflow-x: hidden;
+overflow-y: auto;
+position: relative;
+}
 
-  /* Background texture */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: 
-      radial-gradient(ellipse 80% 60% at 20% 10%, rgba(201,169,110,0.08) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 80% at 80% 90%, rgba(27,58,107,0.6) 0%, transparent 60%);
-    pointer-events: none;
-    z-index: 0;
-  }
+body::before {
+content: ‘’;
+position: fixed;
+inset: 0;
+background:
+radial-gradient(ellipse 80% 60% at 20% 10%, rgba(201,169,110,0.08) 0%, transparent 60%),
+radial-gradient(ellipse 60% 80% at 80% 90%, rgba(27,58,107,0.6) 0%, transparent 60%);
+pointer-events: none;
+z-index: 0;
+}
 
-  /* Progress bar */
-  .progress-bar {
-    position: fixed;
-    top: 0; left: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent), #E8C98E);
-    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    z-index: 100;
-  }
+.progress-bar {
+position: fixed;
+top: 0; left: 0;
+height: 3px;
+background: linear-gradient(90deg, var(–accent), #E8C98E);
+transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+z-index: 100;
+}
 
-  /* Header */
-  .header {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    padding: 24px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 50;
-  }
+.header {
+position: fixed;
+top: 0; left: 0; right: 0;
+padding: 24px 40px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+z-index: 50;
+}
 
-  .logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 14px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--accent);
-    opacity: 0.9;
-  }
+.logo {
+font-family: ‘Playfair Display’, serif;
+font-size: 14px;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: var(–accent);
+opacity: 0.9;
+}
 
-  .step-counter {
-    font-size: 13px;
-    color: var(--gray);
-    letter-spacing: 1px;
-  }
+.step-counter {
+font-size: 13px;
+color: var(–gray);
+letter-spacing: 1px;
+}
 
-  /* Main container */
-  .container {
-    position: relative;
-    z-index: 10;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 100px 24px 80px;
-  }
+.container {
+position: relative;
+z-index: 10;
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 100px 24px 80px;
+}
 
-  /* Question card */
-  .question-card {
-    max-width: 700px;
-    width: 100%;
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-  }
+.question-card {
+max-width: 700px;
+width: 100%;
+opacity: 0;
+transform: translateY(30px);
+transition: opacity 0.5s ease, transform 0.5s ease;
+}
 
-  .question-card.active {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.question-card.active {
+opacity: 1;
+transform: translateY(0);
+}
 
-  .question-card.exit {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
+.question-card.exit {
+opacity: 0;
+transform: translateY(-20px);
+}
 
-  .section-tag {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 16px;
-    font-weight: 500;
-  }
+.section-tag {
+font-size: 11px;
+letter-spacing: 3px;
+text-transform: uppercase;
+color: var(–accent);
+margin-bottom: 16px;
+font-weight: 500;
+}
 
-  .question-text {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(22px, 4vw, 32px);
-    line-height: 1.4;
-    color: var(--white);
-    margin-bottom: 12px;
-    font-weight: 400;
-  }
+.question-text {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(22px, 4vw, 32px);
+line-height: 1.4;
+color: var(–white);
+margin-bottom: 12px;
+font-weight: 400;
+}
 
-  .question-sub {
-    font-size: 15px;
-    color: var(--gray);
-    margin-bottom: 40px;
-    line-height: 1.6;
-    font-weight: 300;
-  }
+.question-sub {
+font-size: 15px;
+color: var(–gray);
+margin-bottom: 40px;
+line-height: 1.6;
+font-weight: 300;
+}
 
-  /* Answer types */
-  .choices {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+.choices {
+display: flex;
+flex-direction: column;
+gap: 10px;
+}
 
-  .choice {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 16px 20px;
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    background: rgba(255,255,255,0.03);
-    font-size: 15px;
-    color: rgba(255,255,255,0.85);
-    text-align: left;
-  }
+.choice {
+display: flex;
+align-items: center;
+gap: 16px;
+padding: 16px 20px;
+border: 1px solid rgba(255,255,255,0.1);
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.2s ease;
+background: rgba(255,255,255,0.03);
+font-size: 15px;
+color: rgba(255,255,255,0.85);
+text-align: left;
+width: 100%;
+}
 
-  .choice:hover {
-    border-color: var(--accent);
-    background: rgba(201,169,110,0.08);
-    color: var(--white);
-  }
+.choice:hover {
+border-color: var(–accent);
+background: rgba(201,169,110,0.08);
+color: var(–white);
+}
 
-  .choice.selected {
-    border-color: var(--accent);
-    background: rgba(201,169,110,0.12);
-    color: var(--white);
-  }
+.choice.selected {
+border-color: var(–accent);
+background: rgba(201,169,110,0.12);
+color: var(–white);
+}
 
-  .choice-key {
-    width: 28px;
-    height: 28px;
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    font-weight: 500;
-    flex-shrink: 0;
-    transition: all 0.2s;
-    color: var(--gray);
-  }
+.choice-key {
+width: 28px;
+height: 28px;
+border: 1px solid rgba(255,255,255,0.2);
+border-radius: 4px;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 12px;
+font-weight: 500;
+flex-shrink: 0;
+transition: all 0.2s;
+color: var(–gray);
+}
 
-  .choice.selected .choice-key {
-    background: var(--accent);
-    border-color: var(--accent);
-    color: var(--navy);
-  }
+.choice.selected .choice-key {
+background: var(–accent);
+border-color: var(–accent);
+color: var(–navy);
+}
 
-  /* Scale */
-  .scale-container {
-    margin-bottom: 8px;
-  }
+.scale-container {
+margin-bottom: 8px;
+}
 
-  .scale-labels {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 12px;
-    font-size: 13px;
-    color: var(--gray);
-    font-style: italic;
-  }
+.scale-labels {
+display: flex;
+justify-content: space-between;
+margin-bottom: 12px;
+font-size: 13px;
+color: var(–gray);
+font-style: italic;
+}
 
-  .scale-options {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-  }
+.scale-options {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 8px;
+}
 
-  .scale-btn {
-    padding: 18px 8px;
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 8px;
-    background: rgba(255,255,255,0.03);
-    cursor: pointer;
-    text-align: center;
-    transition: all 0.2s;
-    font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    color: rgba(255,255,255,0.6);
-  }
+.scale-btn {
+padding: 18px 8px;
+border: 1px solid rgba(255,255,255,0.12);
+border-radius: 8px;
+background: rgba(255,255,255,0.03);
+cursor: pointer;
+text-align: center;
+transition: all 0.2s;
+font-family: ‘Playfair Display’, serif;
+font-size: 22px;
+color: rgba(255,255,255,0.6);
+}
 
-  .scale-btn:hover { border-color: var(--accent); color: var(--white); background: rgba(201,169,110,0.08); }
-  .scale-btn.selected { border-color: var(--accent); background: rgba(201,169,110,0.15); color: var(--accent); }
+.scale-btn:hover { border-color: var(–accent); color: var(–white); background: rgba(201,169,110,0.08); }
+.scale-btn.selected { border-color: var(–accent); background: rgba(201,169,110,0.15); color: var(–accent); }
 
-  .scale-desc {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
-    margin-top: 8px;
-  }
+.scale-desc {
+display: grid;
+grid-template-columns: repeat(4, 1fr);
+gap: 8px;
+margin-top: 8px;
+}
 
-  .scale-desc span {
-    font-size: 11px;
-    color: var(--gray);
-    text-align: center;
-    font-style: italic;
-  }
+.scale-desc span {
+font-size: 11px;
+color: var(–gray);
+text-align: center;
+font-style: italic;
+}
 
-  /* Textarea */
-  .answer-textarea {
-    width: 100%;
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 8px;
-    padding: 20px;
-    color: var(--white);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    line-height: 1.6;
-    resize: none;
-    min-height: 140px;
-    transition: border-color 0.2s;
-    outline: none;
-  }
+.answer-textarea {
+width: 100%;
+background: rgba(255,255,255,0.04);
+border: 1px solid rgba(255,255,255,0.12);
+border-radius: 8px;
+padding: 20px;
+color: var(–white);
+font-family: ‘DM Sans’, sans-serif;
+font-size: 15px;
+line-height: 1.6;
+resize: none;
+min-height: 140px;
+transition: border-color 0.2s;
+outline: none;
+}
 
-  .answer-textarea:focus { border-color: var(--accent); }
-  .answer-textarea::placeholder { color: rgba(255,255,255,0.25); font-style: italic; }
+.answer-textarea:focus { border-color: var(–accent); }
+.answer-textarea::placeholder { color: rgba(255,255,255,0.25); font-style: italic; }
 
-  /* Three word inputs */
-  .three-words {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-  }
+.three-words {
+display: flex;
+flex-wrap: wrap;
+gap: 12px;
+}
 
-  .three-words .word-input {
-    flex: 1 1 120px;
-    min-width: 100px;
-  }
+.three-words .word-input {
+flex: 1 1 120px;
+min-width: 100px;
+}
 
-  .word-input {
-    background: rgba(255,255,255,0.04);
-    border: none;
-    border-bottom: 1px solid rgba(255,255,255,0.2);
-    padding: 12px 4px;
-    color: var(--white);
-    font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    text-align: center;
-    outline: none;
-    transition: border-color 0.2s;
-    width: 100%;
-  }
+.word-input {
+background: rgba(255,255,255,0.04);
+border: none;
+border-bottom: 1px solid rgba(255,255,255,0.2);
+padding: 12px 4px;
+color: var(–white);
+font-family: ‘Playfair Display’, serif;
+font-size: 18px;
+text-align: center;
+outline: none;
+transition: border-color 0.2s;
+width: 100%;
+}
 
-  .word-input:focus { border-bottom-color: var(--accent); }
-  .word-input::placeholder { color: rgba(255,255,255,0.2); font-size: 14px; font-family: 'DM Sans', sans-serif; font-style: italic; }
+.word-input:focus { border-bottom-color: var(–accent); }
+.word-input::placeholder { color: rgba(255,255,255,0.2); font-size: 14px; font-family: ‘DM Sans’, sans-serif; font-style: italic; }
 
-  .word-group { margin-bottom: 28px; }
-  .word-group-label {
-    font-size: 13px;
-    color: var(--accent);
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-    font-weight: 500;
-  }
+.word-group { margin-bottom: 28px; }
+.word-group-label {
+font-size: 13px;
+color: var(–accent);
+letter-spacing: 1px;
+margin-bottom: 12px;
+font-weight: 500;
+}
 
-  /* Word cloud */
-  .word-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
+.word-cloud {
+display: flex;
+flex-wrap: wrap;
+gap: 10px;
+}
 
-  .word-tag {
-    padding: 10px 18px;
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 100px;
-    cursor: pointer;
-    font-size: 14px;
-    color: rgba(255,255,255,0.75);
-    transition: all 0.2s;
-    background: rgba(255,255,255,0.03);
-  }
+.word-tag {
+padding: 10px 18px;
+border: 1px solid rgba(255,255,255,0.12);
+border-radius: 100px;
+cursor: pointer;
+font-size: 14px;
+color: rgba(255,255,255,0.75);
+transition: all 0.2s;
+background: rgba(255,255,255,0.03);
+}
 
-  .word-tag:hover { border-color: var(--accent); color: var(--white); }
-  .word-tag.selected { border-color: var(--accent); background: rgba(201,169,110,0.15); color: var(--accent); }
-  .word-tag.disabled { opacity: 0.3; cursor: not-allowed; }
+.word-tag:hover { border-color: var(–accent); color: var(–white); }
+.word-tag.selected { border-color: var(–accent); background: rgba(201,169,110,0.15); color: var(–accent); }
+.word-tag.disabled { opacity: 0.3; cursor: not-allowed; }
 
-  .word-cloud-hint { font-size: 13px; color: var(--gray); margin-top: 12px; font-style: italic; }
+.word-cloud-hint { font-size: 13px; color: var(–gray); margin-top: 12px; font-style: italic; }
 
-  /* Navigation */
-  .nav {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-top: 40px;
-  }
+/* Navigation with back button */
+.nav {
+display: flex;
+align-items: center;
+gap: 16px;
+margin-top: 40px;
+flex-wrap: wrap;
+}
 
-  .btn-next {
-    padding: 14px 32px;
-    background: var(--accent);
-    color: var(--navy);
-    border: none;
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    letter-spacing: 0.5px;
-  }
+.btn-back {
+padding: 14px 20px;
+background: transparent;
+color: rgba(255,255,255,0.4);
+border: 1px solid rgba(255,255,255,0.12);
+border-radius: 6px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 15px;
+cursor: pointer;
+transition: all 0.2s;
+}
 
-  .btn-next:hover { background: #D4B47A; transform: translateY(-1px); }
-  .btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+.btn-back:hover {
+color: var(–white);
+border-color: rgba(255,255,255,0.3);
+}
 
-  .btn-skip {
-    background: none;
-    border: none;
-    color: var(--gray);
-    font-size: 14px;
-    cursor: pointer;
-    font-family: 'DM Sans', sans-serif;
-    transition: color 0.2s;
-    padding: 14px 0;
-  }
+.btn-next {
+padding: 14px 32px;
+background: var(–accent);
+color: var(–navy);
+border: none;
+border-radius: 6px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 15px;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.2s;
+letter-spacing: 0.5px;
+}
 
-  .btn-skip:hover { color: var(--white); }
+.btn-next:hover { background: #D4B47A; transform: translateY(-1px); }
+.btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
-  .enter-hint {
-    font-size: 13px;
-    color: rgba(255,255,255,0.2);
-    margin-left: auto;
-  }
+.btn-skip {
+background: none;
+border: none;
+color: var(–gray);
+font-size: 14px;
+cursor: pointer;
+font-family: ‘DM Sans’, sans-serif;
+transition: color 0.2s;
+padding: 14px 0;
+}
 
-  /* Welcome & End screens */
-  .screen {
-    max-width: 680px;
-    width: 100%;
-    text-align: center;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.6s ease;
-  }
+.btn-skip:hover { color: var(–white); }
 
-  .screen.active { opacity: 1; transform: translateY(0); }
+.enter-hint {
+font-size: 13px;
+color: rgba(255,255,255,0.2);
+margin-left: auto;
+}
 
-  .screen .eyebrow {
-    font-size: 12px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 24px;
-  }
+.screen {
+max-width: 680px;
+width: 100%;
+text-align: center;
+opacity: 0;
+transform: translateY(20px);
+transition: all 0.6s ease;
+}
 
-  .screen h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(32px, 6vw, 52px);
-    line-height: 1.2;
-    margin-bottom: 24px;
-    font-weight: 400;
-  }
+.screen.active { opacity: 1; transform: translateY(0); }
 
-  .screen h1 em { font-style: italic; color: var(--accent); }
+.screen .eyebrow {
+font-size: 12px;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: var(–accent);
+margin-bottom: 24px;
+}
 
-  .screen p {
-    font-size: 16px;
-    color: rgba(255,255,255,0.65);
-    line-height: 1.7;
-    margin-bottom: 16px;
-    font-weight: 300;
-  }
+.screen h1 {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(32px, 6vw, 52px);
+line-height: 1.2;
+margin-bottom: 24px;
+font-weight: 400;
+}
 
-  .screen .confidential {
-    font-size: 13px;
-    color: rgba(255,255,255,0.3);
-    margin-top: 32px;
-    font-style: italic;
-  }
+.screen h1 em { font-style: italic; color: var(–accent); }
 
-  .btn-start {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    margin-top: 40px;
-    padding: 16px 40px;
-    background: var(--accent);
-    color: var(--navy);
-    border: none;
-    border-radius: 6px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s;
-    letter-spacing: 0.5px;
-  }
+.screen p {
+font-size: 16px;
+color: rgba(255,255,255,0.65);
+line-height: 1.7;
+margin-bottom: 16px;
+font-weight: 300;
+}
 
-  .btn-start:hover { background: #D4B47A; transform: translateY(-2px); }
+.screen .confidential {
+font-size: 13px;
+color: rgba(255,255,255,0.3);
+margin-top: 32px;
+font-style: italic;
+}
 
-  /* Absurd question styling */
-  .absurd-note {
-    font-size: 13px;
-    color: rgba(255,255,255,0.3);
-    font-style: italic;
-    margin-top: 24px;
-  }
+/* Name inputs on welcome screen */
+.name-inputs {
+display: flex;
+gap: 16px;
+margin: 32px 0 8px;
+flex-wrap: wrap;
+justify-content: center;
+}
 
-  /* Keyboard hint */
-  kbd {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2px 6px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 3px;
-    font-size: 12px;
-    font-family: monospace;
-    color: var(--gray);
-  }
+.name-field {
+display: flex;
+flex-direction: column;
+gap: 8px;
+flex: 1;
+min-width: 140px;
+max-width: 220px;
+text-align: left;
+}
 
-  /* Optional badge */
-  .optional-badge {
-    display: inline-block;
-    padding: 3px 10px;
-    background: rgba(255,255,255,0.06);
-    border-radius: 100px;
-    font-size: 11px;
-    color: var(--gray);
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    margin-bottom: 20px;
-  }
+.name-field label {
+font-size: 11px;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(–accent);
+font-weight: 500;
+}
 
-  .transition-screen {
-    text-align: center;
-    padding: 40px 0;
-  }
+.name-field input {
+background: rgba(255,255,255,0.04);
+border: none;
+border-bottom: 1px solid rgba(255,255,255,0.2);
+padding: 10px 4px;
+color: var(–white);
+font-family: ‘DM Sans’, sans-serif;
+font-size: 16px;
+outline: none;
+transition: border-color 0.2s;
+width: 100%;
+}
 
-  .transition-screen .t-label {
-    font-size: 11px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 24px;
-  }
+.name-field input:focus { border-bottom-color: var(–accent); }
+.name-field input::placeholder { color: rgba(255,255,255,0.2); font-style: italic; font-size: 14px; }
 
-  .transition-screen .t-title {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(26px, 5vw, 42px);
-    color: var(--white);
-    margin-bottom: 20px;
-    font-weight: 400;
-    line-height: 1.3;
-  }
+.btn-start {
+display: inline-flex;
+align-items: center;
+gap: 10px;
+margin-top: 32px;
+padding: 16px 40px;
+background: var(–accent);
+color: var(–navy);
+border: none;
+border-radius: 6px;
+font-family: ‘DM Sans’, sans-serif;
+font-size: 16px;
+font-weight: 500;
+cursor: pointer;
+transition: all 0.2s;
+letter-spacing: 0.5px;
+}
 
-  .transition-screen .t-sub {
-    font-size: 16px;
-    color: rgba(255,255,255,0.5);
-    line-height: 1.7;
-    font-weight: 300;
-    max-width: 500px;
-    margin: 0 auto;
-  }
+.btn-start:hover { background: #D4B47A; transform: translateY(-2px); }
+.btn-start:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
-  .confidential-reminder {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-size: 11px;
-    color: rgba(255,255,255,0.18);
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    margin-bottom: 14px;
-  }
+.absurd-note {
+font-size: 13px;
+color: rgba(255,255,255,0.3);
+font-style: italic;
+margin-top: 24px;
+}
 
-    .header { padding: 20px 24px; }
-    .scale-options { grid-template-columns: repeat(4, 1fr); gap: 6px; }
-    .scale-btn { padding: 14px 4px; font-size: 18px; }
-    .three-words { gap: 8px; }
-    .enter-hint { display: none; }
-  }
+kbd {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+padding: 2px 6px;
+background: rgba(255,255,255,0.1);
+border-radius: 3px;
+font-size: 12px;
+font-family: monospace;
+color: var(–gray);
+}
+
+.optional-badge {
+display: inline-block;
+padding: 3px 10px;
+background: rgba(255,255,255,0.06);
+border-radius: 100px;
+font-size: 11px;
+color: var(–gray);
+letter-spacing: 1px;
+text-transform: uppercase;
+margin-bottom: 20px;
+}
+
+.transition-screen {
+text-align: center;
+padding: 40px 0;
+}
+
+.transition-screen .t-label {
+font-size: 11px;
+letter-spacing: 4px;
+text-transform: uppercase;
+color: var(–accent);
+margin-bottom: 24px;
+}
+
+.transition-screen .t-title {
+font-family: ‘Playfair Display’, serif;
+font-size: clamp(26px, 5vw, 42px);
+color: var(–white);
+margin-bottom: 20px;
+font-weight: 400;
+line-height: 1.3;
+}
+
+.transition-screen .t-sub {
+font-size: 16px;
+color: rgba(255,255,255,0.5);
+line-height: 1.7;
+font-weight: 300;
+max-width: 500px;
+margin: 0 auto;
+}
+
+.confidential-reminder {
+display: inline-flex;
+align-items: center;
+gap: 6px;
+font-size: 11px;
+color: rgba(255,255,255,0.18);
+letter-spacing: 1.5px;
+text-transform: uppercase;
+margin-bottom: 14px;
+}
+
+/* FIX: question-text overflow on mobile */
+@media (max-width: 600px) {
+.header { padding: 20px 24px; }
+.scale-options { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.scale-btn { padding: 14px 4px; font-size: 18px; }
+.three-words { gap: 8px; }
+.enter-hint { display: none; }
+.question-text {
+font-size: clamp(18px, 5vw, 26px);
+word-break: break-word;
+overflow-wrap: break-word;
+}
+.section-tag {
+font-size: 10px;
+word-break: break-word;
+}
+.nav { gap: 10px; }
+.btn-back { padding: 12px 14px; font-size: 14px; }
+.btn-next { padding: 12px 24px; font-size: 14px; }
+.name-inputs { flex-direction: column; align-items: center; }
+.name-field { max-width: 100%; width: 100%; }
+}
 </style>
+
 </head>
 <body>
 
@@ -525,22 +592,40 @@
 <div class="container" id="container">
 
   <!-- WELCOME -->
+
   <div class="screen active" id="screen-welcome">
     <div class="eyebrow">Your Leadership Diagnostic</div>
     <h1>Before we meet,<br>let's <em>think</em> together.</h1>
-    <p>This is not a test. There are no right answers.<br>It is an invitation to be honest — with yourself, and with me.</p>
+    <p>This is not a test. There are no right answers.<br>It is an invitation to be honest with yourself, and with me.</p>
     <p>The more genuine your answers, the more useful our first conversation will be.</p>
-    <p class="confidential">100% confidential — nothing shared with your organization without your explicit consent.</p>
-    <button class="btn-start" onclick="startQuestionnaire()">Let's begin →</button>
+
+```
+<div class="name-inputs">
+  <div class="name-field">
+    <label>First name</label>
+    <input type="text" id="inputFirstName" placeholder="Your first name" oninput="checkNameInputs()" />
+  </div>
+  <div class="name-field">
+    <label>Last name</label>
+    <input type="text" id="inputLastName" placeholder="Your last name" oninput="checkNameInputs()" />
+  </div>
+</div>
+
+<p class="confidential">100% confidential. Nothing shared with your organization without your explicit consent.</p>
+<button class="btn-start" id="btnStart" onclick="startQuestionnaire()" disabled>Let's begin →</button>
+```
+
   </div>
 
   <!-- QUESTIONS -->
+
   <div class="question-card" id="questionCard" style="display:none">
     <div class="section-tag" id="qSection"></div>
     <div class="question-text" id="qText"></div>
     <div class="question-sub" id="qSub"></div>
     <div id="qAnswer"></div>
     <div class="nav" id="qNav">
+      <button class="btn-back" id="btnBack" onclick="prevQuestion()">← Back</button>
       <button class="btn-next" id="btnNext" onclick="nextQuestion()">Continue →</button>
       <button class="btn-skip" id="btnSkip" onclick="skipQuestion()" style="display:none">Skip</button>
       <span class="enter-hint">press <kbd>Enter</kbd> ↵</span>
@@ -548,12 +633,13 @@
   </div>
 
   <!-- END -->
+
   <div class="screen" id="screen-end" style="display:none">
     <div class="eyebrow">Thank you</div>
     <h1>You already did<br>the <em>hard part</em>.</h1>
     <p>Most people never stop to think this clearly about where they are and where they want to go.</p>
     <p>I look forward to our conversation.</p>
-    <p class="confidential">Leader Crafting — For your eyes and mine only.</p>
+    <p class="confidential">Leader Crafting. For your eyes and mine only.</p>
   </div>
 
 </div>
@@ -561,27 +647,27 @@
 <script>
 const SECTIONS = {
   warmup: "Warm-up",
-  situation: "01 — Your Situation",
-  reality: "02 — What Is Really Going On",
-  direction: "03 — Where You Want to Go",
-  selfassess: "04 — How You See Yourself",
-  personal: "05 — Beyond the Role",
+  situation: "01 / Your Situation",
+  reality: "02 / What Is Really Going On",
+  direction: "03 / Where You Want to Go",
+  selfassess: "04 / How You See Yourself",
+  personal: "05 / Beyond the Role",
   closing: "Final Question"
 };
 
 const questions = [
-  // ─── WARM-UP (absurd) ───
+  // WARM-UP
   {
     id: "absurd",
     section: "warmup",
-    text: "Quick one to start: would you rather live in a world without mosquitoes — or without taxes?",
+    text: "Quick one to start: would you rather live in a world without mosquitoes, or without taxes?",
     sub: "There is no wrong answer. (There might be a revealing one.)",
     type: "choice",
     optional: false,
-    choices: ["Without mosquitoes — obviously.", "Without taxes — obviously.", "I need to think about this.", "Can I negotiate both?"]
+    choices: ["Without mosquitoes. Obviously.", "Without taxes. Obviously.", "I need to think about this.", "Can I negotiate both?"]
   },
 
-  // ─── SITUATION ───
+  // SITUATION
   {
     id: "role",
     section: "situation",
@@ -592,12 +678,21 @@ const questions = [
     optional: false
   },
   {
+    id: "background",
+    section: "situation",
+    text: "Before this role, what shaped you most?",
+    sub: "A few words on your background, your field, the kind of work you built your expertise in.",
+    type: "textarea",
+    placeholder: "Industry, previous roles, the experience that defined your edge...",
+    optional: false
+  },
+  {
     id: "team_size",
     section: "situation",
-    text: "How many people do you manage — directly or indirectly?",
+    text: "How many people do you manage, directly or indirectly?",
     sub: "",
     type: "choice",
-    choices: ["None yet", "1–5", "6–15", "16–30", "30+"]
+    choices: ["None yet", "1 to 5", "6 to 15", "16 to 30", "More than 30"]
   },
   {
     id: "career_moment",
@@ -606,12 +701,12 @@ const questions = [
     sub: "Pick the one that feels most honest.",
     type: "choice",
     choices: [
-      "Recently promoted — still finding my footing",
-      "In the role for a while — but feeling stuck",
-      "Performing well — but not moving fast enough",
+      "Recently promoted, still finding my footing",
+      "In the role for a while, but feeling stuck",
+      "Performing well, but not moving fast enough",
       "Actively looking for the next level",
-      "Thriving — looking to accelerate further",
-      "Comfortable where I am — no particular ambition to move right now"
+      "Thriving, looking to accelerate further",
+      "Comfortable where I am, no particular ambition to move right now"
     ]
   },
   {
@@ -621,14 +716,14 @@ const questions = [
     sub: "",
     type: "choice",
     choices: [
-      "Strong — I feel supported and visible",
-      "Correct — professional but distant",
-      "Complicated — tension or misalignment",
-      "Limited — we barely interact"
+      "Strong. I feel supported and visible.",
+      "Correct. Professional but distant.",
+      "Complicated. Tension or misalignment.",
+      "Limited. We barely interact."
     ]
   },
 
-  // ─── REALITY ───
+  // REALITY
   {
     id: "impact_sat",
     section: "reality",
@@ -660,7 +755,7 @@ const questions = [
   {
     id: "know_better",
     section: "reality",
-    text: "Is there something you know you should be doing differently — but haven't changed yet?",
+    text: "Is there something you know you should be doing differently, but have not changed yet?",
     sub: "No judgment. This is often where the most useful work begins.",
     type: "textarea",
     placeholder: "Be honest with yourself...",
@@ -674,13 +769,13 @@ const questions = [
     type: "scale4",
     scaleLeft: "Largely invisible above my manager",
     scaleRight: "Known and respected across leadership",
-    scaleDescs: ["Invisible", "Limited", "Emerging", "Known & respected"]
+    scaleDescs: ["Invisible", "Limited", "Emerging", "Known and respected"]
   },
   {
     id: "what_works",
     section: "reality",
     text: "What part of your job do you actually enjoy?",
-    sub: "And — what do you miss from your previous role that you no longer get to do?",
+    sub: "And what do you miss from your previous role that you no longer get to do?",
     type: "textarea",
     placeholder: "What still gives you energy...",
     optional: false
@@ -688,8 +783,8 @@ const questions = [
   {
     id: "feedback_received",
     section: "reality",
-    text: "What feedback have you received about your leadership — formally or informally?",
-    sub: "And if the honest answer is 'not much' — that is itself a data point worth naming.",
+    text: "What feedback have you received about your leadership, formally or informally?",
+    sub: "And if the honest answer is 'not much', that is itself a data point worth naming.",
     type: "textarea",
     placeholder: "What you've heard, what you suspect, what was never said...",
     optional: false
@@ -698,14 +793,14 @@ const questions = [
     id: "promotion_deal",
     section: "reality",
     text: "Was the promotion a good deal?",
-    sub: "More responsibility, more complexity — did the recognition, the salary, the status follow? Or did you absorb more and receive the same?",
+    sub: "More responsibility, more complexity. Did the recognition, the salary, the status follow? Or did you absorb more and receive the same?",
     type: "choice",
     choices: [
-      "Yes — the deal was fair on all dimensions",
-      "Professionally yes, but the financial recognition didn't follow",
-      "The title changed, but little else did",
-      "Not really — I absorbed more and got less than expected",
-      "It's too early to say"
+      "Yes. The deal was fair on all dimensions.",
+      "Professionally yes, but the financial recognition did not follow.",
+      "The title changed, but little else did.",
+      "Not really. I absorbed more and got less than expected.",
+      "It is too early to say."
     ]
   },
   {
@@ -718,21 +813,21 @@ const questions = [
     words: ["Fulfilling", "Exhausting", "Meaningful", "Frustrating", "Stimulating", "Ungrateful", "Empowering", "Lonely", "Purposeful", "Overwhelming", "Visible", "Undervalued"]
   },
 
-  // ─── TRANSITION ───
+  // TRANSITION
   {
     id: "transition",
     section: "direction",
-    text: "Now — what do you want?",
-    sub: "You've mapped where things are. Time to be equally honest about where you're going.",
+    text: "Now, what do you want?",
+    sub: "You have mapped where things are. Time to be equally honest about where you are going.",
     type: "transition"
   },
 
-  // ─── DIRECTION ───
+  // DIRECTION
   {
     id: "next_career",
     section: "direction",
     text: "Where do you want to be in three years?",
-    sub: "Not the LinkedIn version. The real one — what role, what influence, what kind of day would make you feel like you've made it.",
+    sub: "Not the LinkedIn version. The real one. What role, what influence, what kind of day would make you feel like you have made it.",
     type: "textarea",
     placeholder: "Be specific. Vague ambitions stay vague.",
     optional: false
@@ -741,7 +836,7 @@ const questions = [
     id: "main_obstacle",
     section: "direction",
     text: "What is actually standing between you and that?",
-    sub: "Not the official answer. The real one — skills, visibility, politics, confidence, context, timing.",
+    sub: "Not the official answer. The real one. Skills, visibility, politics, confidence, context, timing.",
     type: "textarea",
     placeholder: "Name it.",
     optional: false
@@ -750,17 +845,17 @@ const questions = [
     id: "ideal_job",
     section: "direction",
     text: "Describe the job you are ultimately building toward.",
-    sub: "What should it have that your current role doesn't? What would make you feel like you made it?",
+    sub: "What should it have that your current role does not? What would make you feel like you made it?",
     type: "textarea",
     placeholder: "Your real north star...",
     optional: false
   },
 
-  // ─── SELF ASSESSMENT ───
+  // SELF ASSESSMENT
   {
     id: "sa_influence",
     section: "selfassess",
-    text: "Influencing without authority — getting things done when you are not the decision-maker.",
+    text: "Influencing without authority. Getting things done when you are not the decision-maker.",
     sub: "",
     type: "scale4",
     scaleLeft: "Real weakness",
@@ -770,7 +865,7 @@ const questions = [
   {
     id: "sa_managing_up",
     section: "selfassess",
-    text: "Navigating upward — your manager, senior stakeholders, C-level.",
+    text: "Navigating upward. Your manager, senior stakeholders, C-level.",
     sub: "",
     type: "scale4",
     scaleLeft: "Real weakness",
@@ -780,7 +875,7 @@ const questions = [
   {
     id: "sa_exec_comm",
     section: "selfassess",
-    text: "Speaking the language of leadership — strategic, concise, outcome-focused.",
+    text: "Speaking the language of leadership. Strategic, concise, outcome-focused.",
     sub: "",
     type: "scale4",
     scaleLeft: "Real weakness",
@@ -790,7 +885,7 @@ const questions = [
   {
     id: "sa_delegation",
     section: "selfassess",
-    text: "Delegating — letting go without losing accountability for results.",
+    text: "Delegating. Letting go without losing accountability for results.",
     sub: "",
     type: "scale4",
     scaleLeft: "Real weakness",
@@ -800,7 +895,7 @@ const questions = [
   {
     id: "sa_network",
     section: "selfassess",
-    text: "Building and activating your internal network — being known by the right people.",
+    text: "Building and activating your internal network. Being known by the right people.",
     sub: "",
     type: "scale4",
     scaleLeft: "Real weakness",
@@ -811,31 +906,31 @@ const questions = [
     id: "three_words_self",
     section: "selfassess",
     text: "Three words for your strengths as a leader. Three words for your weaknesses.",
-    sub: "First words that come to mind. Don't overthink it.",
+    sub: "First words that come to mind. Do not overthink it.",
     type: "threewords",
     groups: ["Your strengths", "Your weaknesses"]
   },
   {
     id: "three_words_org",
     section: "selfassess",
-    text: "Now, your organization. Three words that describe what works. Three that describe what doesn't.",
-    sub: "Be honest — this stays between us.",
+    text: "Now, your organization. Three words that describe what works. Three that describe what does not.",
+    sub: "Be honest. This stays between us.",
     type: "threewords",
-    groups: ["What works", "What doesn't"]
+    groups: ["What works", "What does not work"]
   },
 
-  // ─── PERSONAL ───
+  // PERSONAL
   {
     id: "personal",
     section: "personal",
-    text: "One last thing — outside of work.",
-    sub: "What gives you energy? And is there anything in your personal life right now that affects how you show up? You don't need to share details — even naming it helps.",
+    text: "One last thing. Outside of work.",
+    sub: "What gives you energy? And is there anything in your personal life right now that affects how you show up? You do not need to share details. Even naming it helps.",
     type: "textarea",
-    placeholder: "Optional — only what you're comfortable sharing.",
+    placeholder: "Optional. Only what you are comfortable sharing.",
     optional: true
   },
 
-  // ─── CLOSING ───
+  // CLOSING
   {
     id: "worth_it",
     section: "closing",
@@ -849,9 +944,18 @@ const questions = [
 
 let currentIndex = -1;
 let answers = {};
-let started = false;
+let respondentName = { first: '', last: '' };
+
+function checkNameInputs() {
+  const first = document.getElementById('inputFirstName').value.trim();
+  const last = document.getElementById('inputLastName').value.trim();
+  document.getElementById('btnStart').disabled = !(first.length > 0 && last.length > 0);
+}
 
 function startQuestionnaire() {
+  respondentName.first = document.getElementById('inputFirstName').value.trim();
+  respondentName.last = document.getElementById('inputLastName').value.trim();
+
   document.getElementById('screen-welcome').classList.remove('active');
   setTimeout(() => {
     document.getElementById('screen-welcome').style.display = 'none';
@@ -865,36 +969,35 @@ function showQuestion(index) {
   const q = questions[index];
   currentIndex = index;
 
-  // Update progress
-  const progress = ((index) / questions.length) * 100;
+  const progress = (index / questions.length) * 100;
   document.getElementById('progressBar').style.width = progress + '%';
+  // FIX: always show question number
   document.getElementById('stepCounter').textContent = (index + 1) + ' / ' + questions.length;
 
-  // Populate content
   document.getElementById('qSection').textContent = SECTIONS[q.section] || q.section;
   document.getElementById('qText').textContent = q.text;
   document.getElementById('qSub').textContent = q.sub || '';
   document.getElementById('qSub').style.display = q.sub ? 'block' : 'none';
 
-  // Confidential micro-reminder on sensitive questions
   const sensitiveIds = ['frustration', 'know_better', 'promotion_deal', 'feedback_received', 'three_words_org', 'personal'];
   let confEl = document.getElementById('confReminder');
   if (!confEl) {
     confEl = document.createElement('div');
     confEl.id = 'confReminder';
     confEl.className = 'confidential-reminder';
-    confEl.textContent = '🔒 Confidential';
+    confEl.textContent = 'Confidential';
     document.getElementById('qSection').parentNode.insertBefore(confEl, document.getElementById('qSection'));
   }
   confEl.style.display = sensitiveIds.includes(q.id) ? 'inline-flex' : 'none';
 
   document.getElementById('btnNext').textContent = 'Continue →';
 
-  // Optional badge
+  // Back button: hide on first question
+  document.getElementById('btnBack').style.display = index === 0 ? 'none' : 'inline-flex';
+
   const skipBtn = document.getElementById('btnSkip');
   skipBtn.style.display = q.optional ? 'block' : 'none';
 
-  // Render answer
   const answerDiv = document.getElementById('qAnswer');
   answerDiv.innerHTML = '';
 
@@ -906,8 +1009,7 @@ function showQuestion(index) {
       const btn = document.createElement('button');
       btn.className = 'choice';
       btn.innerHTML = `<span class="choice-key">${keys[i]}</span>${choice}`;
-      const savedAnswer = answers[q.id];
-      if (savedAnswer === choice) btn.classList.add('selected');
+      if (answers[q.id] === choice) btn.classList.add('selected');
       btn.onclick = () => {
         div.querySelectorAll('.choice').forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
@@ -951,7 +1053,6 @@ function showQuestion(index) {
         btn.classList.add('selected');
         answers[q.id] = n;
         document.getElementById('btnNext').disabled = false;
-        // Auto-advance after brief pause
         setTimeout(() => nextQuestion(), 400);
       };
       opts.appendChild(btn);
@@ -989,7 +1090,6 @@ function showQuestion(index) {
         } else if (curr.length < q.maxSelect) {
           answers[q.id] = [...curr, word];
         }
-        // Re-render tags
         cloud.querySelectorAll('.word-tag').forEach(t => {
           const w = t.textContent;
           const sel = answers[q.id] || [];
@@ -1075,20 +1175,31 @@ function nextQuestion() {
   }, 300);
 }
 
+function prevQuestion() {
+  if (currentIndex <= 0) return;
+  const card = document.getElementById('questionCard');
+  card.classList.add('exit');
+  setTimeout(() => {
+    card.classList.remove('active', 'exit');
+    showQuestion(currentIndex - 1);
+  }, 300);
+}
+
 function skipQuestion() {
   nextQuestion();
 }
 
 function showEnd() {
-  // Submit to Formspree
-  const payload = {};
+  const payload = {
+    respondent_first_name: respondentName.first,
+    respondent_last_name: respondentName.last
+  };
   questions.forEach(q => {
     if (!answers[q.id]) return;
     const val = answers[q.id];
     if (typeof val === 'object' && !Array.isArray(val)) {
-      // threewords groups
       Object.keys(val).forEach(group => {
-        payload[`${q.id} — ${group}`] = (val[group] || []).filter(v => v).join(', ');
+        payload[`${q.id} - ${group}`] = (val[group] || []).filter(v => v).join(', ');
       });
     } else if (Array.isArray(val)) {
       payload[q.id] = val.join(', ');
@@ -1101,7 +1212,7 @@ function showEnd() {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
     body: JSON.stringify(payload)
-  }).catch(() => {}); // silent fail — don't block UX
+  }).catch(() => {});
 
   document.getElementById('questionCard').style.display = 'none';
   document.getElementById('progressBar').style.width = '100%';
@@ -1113,17 +1224,15 @@ function showEnd() {
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
-  if (!started && e.key === 'Enter') { startQuestionnaire(); started = true; return; }
   if (currentIndex < 0) return;
   const q = questions[currentIndex];
 
-  // Letter keys for choices
   if (q && q.type === 'choice') {
     const keys = ['a','b','c','d','e','f'];
     const idx = keys.indexOf(e.key.toLowerCase());
     if (idx >= 0 && idx < q.choices.length) {
       const choiceBtns = document.querySelectorAll('.choice');
-      if (choiceBtns[idx]) { choiceBtns[idx].click(); }
+      if (choiceBtns[idx]) choiceBtns[idx].click();
     }
   }
 
@@ -1136,5 +1245,6 @@ document.addEventListener('keydown', (e) => {
   }
 });
 </script>
+
 </body>
 </html>
