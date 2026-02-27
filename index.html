@@ -93,15 +93,8 @@ transform: translateY(30px);
 transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.question-card.active {
-opacity: 1;
-transform: translateY(0);
-}
-
-.question-card.exit {
-opacity: 0;
-transform: translateY(-20px);
-}
+.question-card.active { opacity: 1; transform: translateY(0); }
+.question-card.exit { opacity: 0; transform: translateY(-20px); }
 
 .section-tag {
 font-size: 11px;
@@ -129,11 +122,7 @@ line-height: 1.6;
 font-weight: 300;
 }
 
-.choices {
-display: flex;
-flex-direction: column;
-gap: 10px;
-}
+.choices { display: flex; flex-direction: column; gap: 10px; }
 
 .choice {
 display: flex;
@@ -151,57 +140,24 @@ text-align: left;
 width: 100%;
 }
 
-.choice:hover {
-border-color: var(–accent);
-background: rgba(201,169,110,0.08);
-color: var(–white);
-}
-
-.choice.selected {
-border-color: var(–accent);
-background: rgba(201,169,110,0.12);
-color: var(–white);
-}
+.choice:hover { border-color: var(–accent); background: rgba(201,169,110,0.08); color: var(–white); }
+.choice.selected { border-color: var(–accent); background: rgba(201,169,110,0.12); color: var(–white); }
 
 .choice-key {
-width: 28px;
-height: 28px;
+width: 28px; height: 28px;
 border: 1px solid rgba(255,255,255,0.2);
 border-radius: 4px;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 12px;
-font-weight: 500;
-flex-shrink: 0;
+display: flex; align-items: center; justify-content: center;
+font-size: 12px; font-weight: 500; flex-shrink: 0;
 transition: all 0.2s;
 color: var(–gray);
 }
 
-.choice.selected .choice-key {
-background: var(–accent);
-border-color: var(–accent);
-color: var(–navy);
-}
+.choice.selected .choice-key { background: var(–accent); border-color: var(–accent); color: var(–navy); }
 
-.scale-container {
-margin-bottom: 8px;
-}
+.scale-labels { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 13px; color: var(–gray); font-style: italic; }
 
-.scale-labels {
-display: flex;
-justify-content: space-between;
-margin-bottom: 12px;
-font-size: 13px;
-color: var(–gray);
-font-style: italic;
-}
-
-.scale-options {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 8px;
-}
+.scale-options { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
 
 .scale-btn {
 padding: 18px 8px;
@@ -219,19 +175,8 @@ color: rgba(255,255,255,0.6);
 .scale-btn:hover { border-color: var(–accent); color: var(–white); background: rgba(201,169,110,0.08); }
 .scale-btn.selected { border-color: var(–accent); background: rgba(201,169,110,0.15); color: var(–accent); }
 
-.scale-desc {
-display: grid;
-grid-template-columns: repeat(4, 1fr);
-gap: 8px;
-margin-top: 8px;
-}
-
-.scale-desc span {
-font-size: 11px;
-color: var(–gray);
-text-align: center;
-font-style: italic;
-}
+.scale-desc { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 8px; }
+.scale-desc span { font-size: 11px; color: var(–gray); text-align: center; font-style: italic; }
 
 .answer-textarea {
 width: 100%;
@@ -252,18 +197,10 @@ outline: none;
 .answer-textarea:focus { border-color: var(–accent); }
 .answer-textarea::placeholder { color: rgba(255,255,255,0.25); font-style: italic; }
 
-.three-words {
-display: flex;
-flex-wrap: wrap;
-gap: 12px;
-}
-
-.three-words .word-input {
-flex: 1 1 120px;
-min-width: 100px;
-}
+.three-words { display: flex; gap: 12px; }
 
 .word-input {
+flex: 1;
 background: rgba(255,255,255,0.04);
 border: none;
 border-bottom: 1px solid rgba(255,255,255,0.2);
@@ -274,26 +211,16 @@ font-size: 18px;
 text-align: center;
 outline: none;
 transition: border-color 0.2s;
-width: 100%;
+min-width: 0;
 }
 
 .word-input:focus { border-bottom-color: var(–accent); }
-.word-input::placeholder { color: rgba(255,255,255,0.2); font-size: 14px; font-family: ‘DM Sans’, sans-serif; font-style: italic; }
+.word-input::placeholder { color: rgba(255,255,255,0.2); font-size: 13px; font-family: ‘DM Sans’, sans-serif; font-style: italic; }
 
 .word-group { margin-bottom: 28px; }
-.word-group-label {
-font-size: 13px;
-color: var(–accent);
-letter-spacing: 1px;
-margin-bottom: 12px;
-font-weight: 500;
-}
+.word-group-label { font-size: 13px; color: var(–accent); letter-spacing: 1px; margin-bottom: 12px; font-weight: 500; }
 
-.word-cloud {
-display: flex;
-flex-wrap: wrap;
-gap: 10px;
-}
+.word-cloud { display: flex; flex-wrap: wrap; gap: 10px; }
 
 .word-tag {
 padding: 10px 18px;
@@ -312,14 +239,7 @@ background: rgba(255,255,255,0.03);
 
 .word-cloud-hint { font-size: 13px; color: var(–gray); margin-top: 12px; font-style: italic; }
 
-/* Navigation with back button */
-.nav {
-display: flex;
-align-items: center;
-gap: 16px;
-margin-top: 40px;
-flex-wrap: wrap;
-}
+.nav { display: flex; align-items: center; gap: 16px; margin-top: 40px; flex-wrap: wrap; }
 
 .btn-back {
 padding: 14px 20px;
@@ -333,10 +253,7 @@ cursor: pointer;
 transition: all 0.2s;
 }
 
-.btn-back:hover {
-color: var(–white);
-border-color: rgba(255,255,255,0.3);
-}
+.btn-back:hover { color: var(–white); border-color: rgba(255,255,255,0.3); }
 
 .btn-next {
 padding: 14px 32px;
@@ -356,226 +273,87 @@ letter-spacing: 0.5px;
 .btn-next:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
 .btn-skip {
-background: none;
-border: none;
-color: var(–gray);
-font-size: 14px;
-cursor: pointer;
-font-family: ‘DM Sans’, sans-serif;
-transition: color 0.2s;
-padding: 14px 0;
+background: none; border: none;
+color: var(–gray); font-size: 14px;
+cursor: pointer; font-family: ‘DM Sans’, sans-serif;
+transition: color 0.2s; padding: 14px 0;
 }
 
 .btn-skip:hover { color: var(–white); }
 
-.enter-hint {
-font-size: 13px;
-color: rgba(255,255,255,0.2);
-margin-left: auto;
-}
+.enter-hint { font-size: 13px; color: rgba(255,255,255,0.2); margin-left: auto; }
 
 .screen {
-max-width: 680px;
-width: 100%;
+max-width: 680px; width: 100%;
 text-align: center;
-opacity: 0;
-transform: translateY(20px);
+opacity: 0; transform: translateY(20px);
 transition: all 0.6s ease;
 }
 
 .screen.active { opacity: 1; transform: translateY(0); }
-
-.screen .eyebrow {
-font-size: 12px;
-letter-spacing: 4px;
-text-transform: uppercase;
-color: var(–accent);
-margin-bottom: 24px;
-}
-
-.screen h1 {
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(32px, 6vw, 52px);
-line-height: 1.2;
-margin-bottom: 24px;
-font-weight: 400;
-}
-
+.screen .eyebrow { font-size: 12px; letter-spacing: 4px; text-transform: uppercase; color: var(–accent); margin-bottom: 24px; }
+.screen h1 { font-family: ‘Playfair Display’, serif; font-size: clamp(32px, 6vw, 52px); line-height: 1.2; margin-bottom: 24px; font-weight: 400; }
 .screen h1 em { font-style: italic; color: var(–accent); }
+.screen p { font-size: 16px; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 16px; font-weight: 300; }
+.screen .confidential { font-size: 13px; color: rgba(255,255,255,0.3); margin-top: 32px; font-style: italic; }
 
-.screen p {
-font-size: 16px;
-color: rgba(255,255,255,0.65);
-line-height: 1.7;
-margin-bottom: 16px;
-font-weight: 300;
-}
+.name-inputs { display: flex; gap: 16px; margin: 32px 0 8px; flex-wrap: wrap; justify-content: center; }
 
-.screen .confidential {
-font-size: 13px;
-color: rgba(255,255,255,0.3);
-margin-top: 32px;
-font-style: italic;
-}
+.name-field { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 140px; max-width: 220px; text-align: left; }
 
-/* Name inputs on welcome screen */
-.name-inputs {
-display: flex;
-gap: 16px;
-margin: 32px 0 8px;
-flex-wrap: wrap;
-justify-content: center;
-}
-
-.name-field {
-display: flex;
-flex-direction: column;
-gap: 8px;
-flex: 1;
-min-width: 140px;
-max-width: 220px;
-text-align: left;
-}
-
-.name-field label {
-font-size: 11px;
-letter-spacing: 2px;
-text-transform: uppercase;
-color: var(–accent);
-font-weight: 500;
-}
+.name-field label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(–accent); font-weight: 500; }
 
 .name-field input {
 background: rgba(255,255,255,0.04);
-border: none;
-border-bottom: 1px solid rgba(255,255,255,0.2);
-padding: 10px 4px;
-color: var(–white);
-font-family: ‘DM Sans’, sans-serif;
-font-size: 16px;
-outline: none;
-transition: border-color 0.2s;
-width: 100%;
+border: none; border-bottom: 1px solid rgba(255,255,255,0.2);
+padding: 10px 4px; color: var(–white);
+font-family: ‘DM Sans’, sans-serif; font-size: 16px;
+outline: none; transition: border-color 0.2s; width: 100%;
 }
 
 .name-field input:focus { border-bottom-color: var(–accent); }
 .name-field input::placeholder { color: rgba(255,255,255,0.2); font-style: italic; font-size: 14px; }
 
 .btn-start {
-display: inline-flex;
-align-items: center;
-gap: 10px;
-margin-top: 32px;
-padding: 16px 40px;
-background: var(–accent);
-color: var(–navy);
-border: none;
-border-radius: 6px;
-font-family: ‘DM Sans’, sans-serif;
-font-size: 16px;
-font-weight: 500;
-cursor: pointer;
-transition: all 0.2s;
-letter-spacing: 0.5px;
+display: inline-flex; align-items: center; gap: 10px;
+margin-top: 32px; padding: 16px 40px;
+background: var(–accent); color: var(–navy);
+border: none; border-radius: 6px;
+font-family: ‘DM Sans’, sans-serif; font-size: 16px; font-weight: 500;
+cursor: pointer; transition: all 0.2s; letter-spacing: 0.5px;
 }
 
 .btn-start:hover { background: #D4B47A; transform: translateY(-2px); }
 .btn-start:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
 
-.absurd-note {
-font-size: 13px;
-color: rgba(255,255,255,0.3);
-font-style: italic;
-margin-top: 24px;
-}
-
 kbd {
-display: inline-flex;
-align-items: center;
-justify-content: center;
-padding: 2px 6px;
-background: rgba(255,255,255,0.1);
-border-radius: 3px;
-font-size: 12px;
-font-family: monospace;
-color: var(–gray);
+display: inline-flex; align-items: center; justify-content: center;
+padding: 2px 6px; background: rgba(255,255,255,0.1);
+border-radius: 3px; font-size: 12px; font-family: monospace; color: var(–gray);
 }
 
-.optional-badge {
-display: inline-block;
-padding: 3px 10px;
-background: rgba(255,255,255,0.06);
-border-radius: 100px;
-font-size: 11px;
-color: var(–gray);
-letter-spacing: 1px;
-text-transform: uppercase;
-margin-bottom: 20px;
-}
-
-.transition-screen {
-text-align: center;
-padding: 40px 0;
-}
-
-.transition-screen .t-label {
-font-size: 11px;
-letter-spacing: 4px;
-text-transform: uppercase;
-color: var(–accent);
-margin-bottom: 24px;
-}
-
-.transition-screen .t-title {
-font-family: ‘Playfair Display’, serif;
-font-size: clamp(26px, 5vw, 42px);
-color: var(–white);
-margin-bottom: 20px;
-font-weight: 400;
-line-height: 1.3;
-}
-
-.transition-screen .t-sub {
-font-size: 16px;
-color: rgba(255,255,255,0.5);
-line-height: 1.7;
-font-weight: 300;
-max-width: 500px;
-margin: 0 auto;
-}
+.transition-screen { text-align: center; padding: 40px 0; }
 
 .confidential-reminder {
-display: inline-flex;
-align-items: center;
-gap: 6px;
-font-size: 11px;
-color: rgba(255,255,255,0.18);
-letter-spacing: 1.5px;
-text-transform: uppercase;
-margin-bottom: 14px;
+display: inline-flex; align-items: center; gap: 6px;
+font-size: 11px; color: rgba(255,255,255,0.18);
+letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 14px;
 }
 
-/* FIX: question-text overflow on mobile */
 @media (max-width: 600px) {
 .header { padding: 20px 24px; }
-.scale-options { grid-template-columns: repeat(4, 1fr); gap: 6px; }
+.scale-options { gap: 6px; }
 .scale-btn { padding: 14px 4px; font-size: 18px; }
-.three-words { gap: 8px; }
 .enter-hint { display: none; }
-.question-text {
-font-size: clamp(18px, 5vw, 26px);
-word-break: break-word;
-overflow-wrap: break-word;
-}
-.section-tag {
-font-size: 10px;
-word-break: break-word;
-}
+.question-text { font-size: clamp(18px, 5vw, 26px); word-break: break-word; overflow-wrap: break-word; }
+.section-tag { font-size: 10px; word-break: break-word; }
 .nav { gap: 10px; }
 .btn-back { padding: 12px 14px; font-size: 14px; }
 .btn-next { padding: 12px 24px; font-size: 14px; }
 .name-inputs { flex-direction: column; align-items: center; }
 .name-field { max-width: 100%; width: 100%; }
+.three-words { gap: 6px; }
+.word-input { font-size: 15px; }
 }
 </style>
 
@@ -591,33 +369,24 @@ word-break: break-word;
 
 <div class="container" id="container">
 
-  <!-- WELCOME -->
-
   <div class="screen active" id="screen-welcome">
     <div class="eyebrow">Your Leadership Diagnostic</div>
     <h1>Before we meet,<br>let's <em>think</em> together.</h1>
     <p>This is not a test. There are no right answers.<br>It is an invitation to be honest with yourself, and with me.</p>
     <p>The more genuine your answers, the more useful our first conversation will be.</p>
-
-```
-<div class="name-inputs">
-  <div class="name-field">
-    <label>First name</label>
-    <input type="text" id="inputFirstName" placeholder="Your first name" oninput="checkNameInputs()" />
+    <div class="name-inputs">
+      <div class="name-field">
+        <label>First name</label>
+        <input type="text" id="inputFirstName" placeholder="Your first name" oninput="checkNameInputs()" />
+      </div>
+      <div class="name-field">
+        <label>Last name</label>
+        <input type="text" id="inputLastName" placeholder="Your last name" oninput="checkNameInputs()" />
+      </div>
+    </div>
+    <p class="confidential">100% confidential. Nothing shared with your organization without your explicit consent.</p>
+    <button class="btn-start" id="btnStart" onclick="startQuestionnaire()" disabled>Let's begin &#8594;</button>
   </div>
-  <div class="name-field">
-    <label>Last name</label>
-    <input type="text" id="inputLastName" placeholder="Your last name" oninput="checkNameInputs()" />
-  </div>
-</div>
-
-<p class="confidential">100% confidential. Nothing shared with your organization without your explicit consent.</p>
-<button class="btn-start" id="btnStart" onclick="startQuestionnaire()" disabled>Let's begin →</button>
-```
-
-  </div>
-
-  <!-- QUESTIONS -->
 
   <div class="question-card" id="questionCard" style="display:none">
     <div class="section-tag" id="qSection"></div>
@@ -625,14 +394,12 @@ word-break: break-word;
     <div class="question-sub" id="qSub"></div>
     <div id="qAnswer"></div>
     <div class="nav" id="qNav">
-      <button class="btn-back" id="btnBack" onclick="prevQuestion()">← Back</button>
-      <button class="btn-next" id="btnNext" onclick="nextQuestion()">Continue →</button>
+      <button class="btn-back" id="btnBack" onclick="prevQuestion()">&#8592; Back</button>
+      <button class="btn-next" id="btnNext" onclick="nextQuestion()">Continue &#8594;</button>
       <button class="btn-skip" id="btnSkip" onclick="skipQuestion()" style="display:none">Skip</button>
-      <span class="enter-hint">press <kbd>Enter</kbd> ↵</span>
+      <span class="enter-hint">press <kbd>Enter</kbd> &#8629;</span>
     </div>
   </div>
-
-  <!-- END -->
 
   <div class="screen" id="screen-end" style="display:none">
     <div class="eyebrow">Thank you</div>
@@ -656,290 +423,34 @@ const SECTIONS = {
 };
 
 const questions = [
-  // WARM-UP
-  {
-    id: "absurd",
-    section: "warmup",
-    text: "Quick one to start: would you rather live in a world without mosquitoes, or without taxes?",
-    sub: "There is no wrong answer. (There might be a revealing one.)",
-    type: "choice",
-    optional: false,
-    choices: ["Without mosquitoes. Obviously.", "Without taxes. Obviously.", "I need to think about this.", "Can I negotiate both?"]
-  },
-
-  // SITUATION
-  {
-    id: "role",
-    section: "situation",
-    text: "What is your current role, and how long have you been in it?",
-    sub: "",
-    type: "textarea",
-    placeholder: "Job title, company type, time in role...",
-    optional: false
-  },
-  {
-    id: "background",
-    section: "situation",
-    text: "Before this role, what shaped you most?",
-    sub: "A few words on your background, your field, the kind of work you built your expertise in.",
-    type: "textarea",
-    placeholder: "Industry, previous roles, the experience that defined your edge...",
-    optional: false
-  },
-  {
-    id: "team_size",
-    section: "situation",
-    text: "How many people do you manage, directly or indirectly?",
-    sub: "",
-    type: "choice",
-    choices: ["None yet", "1 to 5", "6 to 15", "16 to 30", "More than 30"]
-  },
-  {
-    id: "career_moment",
-    section: "situation",
-    text: "Where are you in your career right now?",
-    sub: "Pick the one that feels most honest.",
-    type: "choice",
-    choices: [
-      "Recently promoted, still finding my footing",
-      "In the role for a while, but feeling stuck",
-      "Performing well, but not moving fast enough",
-      "Actively looking for the next level",
-      "Thriving, looking to accelerate further",
-      "Comfortable where I am, no particular ambition to move right now"
-    ]
-  },
-  {
-    id: "manager_rel",
-    section: "situation",
-    text: "How would you describe your relationship with your direct manager?",
-    sub: "",
-    type: "choice",
-    choices: [
-      "Strong. I feel supported and visible.",
-      "Correct. Professional but distant.",
-      "Complicated. Tension or misalignment.",
-      "Limited. We barely interact."
-    ]
-  },
-
-  // REALITY
-  {
-    id: "impact_sat",
-    section: "reality",
-    text: "How satisfied are you with the impact you are actually having right now?",
-    sub: "Not your activity level. Your real impact on things that matter.",
-    type: "scale4",
-    scaleLeft: "Frustrated and underutilized",
-    scaleRight: "Operating at full potential",
-    scaleDescs: ["Frustrated", "Underutilized", "Almost there", "Full potential"]
-  },
-  {
-    id: "impact_why",
-    section: "reality",
-    text: "What is behind that answer?",
-    sub: "One or two sentences. What is actually going on?",
-    type: "textarea",
-    placeholder: "Be direct...",
-    optional: false
-  },
-  {
-    id: "frustration",
-    section: "reality",
-    text: "What frustrates you most in your current role?",
-    sub: "The thing that drains you, slows you down, or makes you question why you took this job.",
-    type: "textarea",
-    placeholder: "No filter needed here.",
-    optional: false
-  },
-  {
-    id: "know_better",
-    section: "reality",
-    text: "Is there something you know you should be doing differently, but have not changed yet?",
-    sub: "No judgment. This is often where the most useful work begins.",
-    type: "textarea",
-    placeholder: "Be honest with yourself...",
-    optional: false
-  },
-  {
-    id: "visibility",
-    section: "reality",
-    text: "How visible are you to the people who decide your future in this organization?",
-    sub: "",
-    type: "scale4",
-    scaleLeft: "Largely invisible above my manager",
-    scaleRight: "Known and respected across leadership",
-    scaleDescs: ["Invisible", "Limited", "Emerging", "Known and respected"]
-  },
-  {
-    id: "what_works",
-    section: "reality",
-    text: "What part of your job do you actually enjoy?",
-    sub: "And what do you miss from your previous role that you no longer get to do?",
-    type: "textarea",
-    placeholder: "What still gives you energy...",
-    optional: false
-  },
-  {
-    id: "feedback_received",
-    section: "reality",
-    text: "What feedback have you received about your leadership, formally or informally?",
-    sub: "And if the honest answer is 'not much', that is itself a data point worth naming.",
-    type: "textarea",
-    placeholder: "What you've heard, what you suspect, what was never said...",
-    optional: false
-  },
-  {
-    id: "promotion_deal",
-    section: "reality",
-    text: "Was the promotion a good deal?",
-    sub: "More responsibility, more complexity. Did the recognition, the salary, the status follow? Or did you absorb more and receive the same?",
-    type: "choice",
-    choices: [
-      "Yes. The deal was fair on all dimensions.",
-      "Professionally yes, but the financial recognition did not follow.",
-      "The title changed, but little else did.",
-      "Not really. I absorbed more and got less than expected.",
-      "It is too early to say."
-    ]
-  },
-  {
-    id: "manager_words",
-    section: "reality",
-    text: "When you think about your job as a manager, which three words ring most true?",
-    sub: "Pick exactly 3.",
-    type: "wordcloud",
-    maxSelect: 3,
-    words: ["Fulfilling", "Exhausting", "Meaningful", "Frustrating", "Stimulating", "Ungrateful", "Empowering", "Lonely", "Purposeful", "Overwhelming", "Visible", "Undervalued"]
-  },
-
-  // TRANSITION
-  {
-    id: "transition",
-    section: "direction",
-    text: "Now, what do you want?",
-    sub: "You have mapped where things are. Time to be equally honest about where you are going.",
-    type: "transition"
-  },
-
-  // DIRECTION
-  {
-    id: "next_career",
-    section: "direction",
-    text: "Where do you want to be in three years?",
-    sub: "Not the LinkedIn version. The real one. What role, what influence, what kind of day would make you feel like you have made it.",
-    type: "textarea",
-    placeholder: "Be specific. Vague ambitions stay vague.",
-    optional: false
-  },
-  {
-    id: "main_obstacle",
-    section: "direction",
-    text: "What is actually standing between you and that?",
-    sub: "Not the official answer. The real one. Skills, visibility, politics, confidence, context, timing.",
-    type: "textarea",
-    placeholder: "Name it.",
-    optional: false
-  },
-  {
-    id: "ideal_job",
-    section: "direction",
-    text: "Describe the job you are ultimately building toward.",
-    sub: "What should it have that your current role does not? What would make you feel like you made it?",
-    type: "textarea",
-    placeholder: "Your real north star...",
-    optional: false
-  },
-
-  // SELF ASSESSMENT
-  {
-    id: "sa_influence",
-    section: "selfassess",
-    text: "Influencing without authority. Getting things done when you are not the decision-maker.",
-    sub: "",
-    type: "scale4",
-    scaleLeft: "Real weakness",
-    scaleRight: "Genuine strength",
-    scaleDescs: ["Weakness", "Developing", "Solid", "Strength"]
-  },
-  {
-    id: "sa_managing_up",
-    section: "selfassess",
-    text: "Navigating upward. Your manager, senior stakeholders, C-level.",
-    sub: "",
-    type: "scale4",
-    scaleLeft: "Real weakness",
-    scaleRight: "Genuine strength",
-    scaleDescs: ["Weakness", "Developing", "Solid", "Strength"]
-  },
-  {
-    id: "sa_exec_comm",
-    section: "selfassess",
-    text: "Speaking the language of leadership. Strategic, concise, outcome-focused.",
-    sub: "",
-    type: "scale4",
-    scaleLeft: "Real weakness",
-    scaleRight: "Genuine strength",
-    scaleDescs: ["Weakness", "Developing", "Solid", "Strength"]
-  },
-  {
-    id: "sa_delegation",
-    section: "selfassess",
-    text: "Delegating. Letting go without losing accountability for results.",
-    sub: "",
-    type: "scale4",
-    scaleLeft: "Real weakness",
-    scaleRight: "Genuine strength",
-    scaleDescs: ["Weakness", "Developing", "Solid", "Strength"]
-  },
-  {
-    id: "sa_network",
-    section: "selfassess",
-    text: "Building and activating your internal network. Being known by the right people.",
-    sub: "",
-    type: "scale4",
-    scaleLeft: "Real weakness",
-    scaleRight: "Genuine strength",
-    scaleDescs: ["Weakness", "Developing", "Solid", "Strength"]
-  },
-  {
-    id: "three_words_self",
-    section: "selfassess",
-    text: "Three words for your strengths as a leader. Three words for your weaknesses.",
-    sub: "First words that come to mind. Do not overthink it.",
-    type: "threewords",
-    groups: ["Your strengths", "Your weaknesses"]
-  },
-  {
-    id: "three_words_org",
-    section: "selfassess",
-    text: "Now, your organization. Three words that describe what works. Three that describe what does not.",
-    sub: "Be honest. This stays between us.",
-    type: "threewords",
-    groups: ["What works", "What does not work"]
-  },
-
-  // PERSONAL
-  {
-    id: "personal",
-    section: "personal",
-    text: "One last thing. Outside of work.",
-    sub: "What gives you energy? And is there anything in your personal life right now that affects how you show up? You do not need to share details. Even naming it helps.",
-    type: "textarea",
-    placeholder: "Optional. Only what you are comfortable sharing.",
-    optional: true
-  },
-
-  // CLOSING
-  {
-    id: "worth_it",
-    section: "closing",
-    text: "At the end of our work together, what would make you say: this was worth it?",
-    sub: "Not just a title or a raise. How you show up. How you feel. How others see you.",
-    type: "textarea",
-    placeholder: "Your real definition of success here...",
-    optional: false
-  }
+  { id: "absurd", section: "warmup", text: "Quick one to start: would you rather live in a world without mosquitoes, or without taxes?", sub: "There is no wrong answer. (There might be a revealing one.)", type: "choice", optional: false, choices: ["Without mosquitoes. Obviously.", "Without taxes. Obviously.", "I need to think about this.", "Can I negotiate both?"] },
+  { id: "role", section: "situation", text: "What is your current role, and how long have you been in it?", sub: "", type: "textarea", placeholder: "Job title, company type, time in role...", optional: false },
+  { id: "background", section: "situation", text: "Before this role, what shaped you most?", sub: "A few words on your background, your field, the kind of work you built your expertise in.", type: "textarea", placeholder: "Industry, previous roles, the experience that defined your edge...", optional: false },
+  { id: "team_size", section: "situation", text: "How many people do you manage, directly or indirectly?", sub: "", type: "choice", choices: ["None yet", "1 to 5", "6 to 15", "16 to 30", "More than 30"] },
+  { id: "career_moment", section: "situation", text: "Where are you in your career right now?", sub: "Pick the one that feels most honest.", type: "choice", choices: ["Recently promoted, still finding my footing", "In the role for a while, but feeling stuck", "Performing well, but not moving fast enough", "Actively looking for the next level", "Thriving, looking to accelerate further", "Comfortable where I am, no particular ambition to move right now"] },
+  { id: "manager_rel", section: "situation", text: "How would you describe your relationship with your direct manager?", sub: "", type: "choice", choices: ["Strong. I feel supported and visible.", "Correct. Professional but distant.", "Complicated. Tension or misalignment.", "Limited. We barely interact."] },
+  { id: "impact_sat", section: "reality", text: "How satisfied are you with the impact you are actually having right now?", sub: "Not your activity level. Your real impact on things that matter.", type: "scale4", scaleLeft: "Frustrated and underutilized", scaleRight: "Operating at full potential", scaleDescs: ["Frustrated", "Underutilized", "Almost there", "Full potential"] },
+  { id: "impact_why", section: "reality", text: "What is behind that answer?", sub: "One or two sentences. What is actually going on?", type: "textarea", placeholder: "Be direct...", optional: false },
+  { id: "frustration", section: "reality", text: "What frustrates you most in your current role?", sub: "The thing that drains you, slows you down, or makes you question why you took this job.", type: "textarea", placeholder: "No filter needed here.", optional: false },
+  { id: "know_better", section: "reality", text: "Is there something you know you should be doing differently, but have not changed yet?", sub: "No judgment. This is often where the most useful work begins.", type: "textarea", placeholder: "Be honest with yourself...", optional: false },
+  { id: "visibility", section: "reality", text: "How visible are you to the people who decide your future in this organization?", sub: "", type: "scale4", scaleLeft: "Largely invisible above my manager", scaleRight: "Known and respected across leadership", scaleDescs: ["Invisible", "Limited", "Emerging", "Known and respected"] },
+  { id: "what_works", section: "reality", text: "What part of your job do you actually enjoy?", sub: "And what do you miss from your previous role that you no longer get to do?", type: "textarea", placeholder: "What still gives you energy...", optional: false },
+  { id: "feedback_received", section: "reality", text: "What feedback have you received about your leadership, formally or informally?", sub: "And if the honest answer is 'not much', that is itself a data point worth naming.", type: "textarea", placeholder: "What you've heard, what you suspect, what was never said...", optional: false },
+  { id: "promotion_deal", section: "reality", text: "Was the promotion a good deal?", sub: "More responsibility, more complexity. Did the recognition, the salary, the status follow? Or did you absorb more and receive the same?", type: "choice", choices: ["Yes. The deal was fair on all dimensions.", "Professionally yes, but the financial recognition did not follow.", "The title changed, but little else did.", "Not really. I absorbed more and got less than expected.", "It is too early to say."] },
+  { id: "manager_words", section: "reality", text: "When you think about your job as a manager, which three words ring most true?", sub: "Pick exactly 3.", type: "wordcloud", maxSelect: 3, words: ["Fulfilling", "Exhausting", "Meaningful", "Frustrating", "Stimulating", "Ungrateful", "Empowering", "Lonely", "Purposeful", "Overwhelming", "Visible", "Undervalued"] },
+  { id: "transition", section: "direction", text: "Now, what do you want?", sub: "You have mapped where things are. Time to be equally honest about where you are going.", type: "transition" },
+  { id: "next_career", section: "direction", text: "Where do you want to be in three years?", sub: "Not the LinkedIn version. The real one. What role, what influence, what kind of day would make you feel like you have made it.", type: "textarea", placeholder: "Be specific. Vague ambitions stay vague.", optional: false },
+  { id: "main_obstacle", section: "direction", text: "What is actually standing between you and that?", sub: "Not the official answer. The real one. Skills, visibility, politics, confidence, context, timing.", type: "textarea", placeholder: "Name it.", optional: false },
+  { id: "ideal_job", section: "direction", text: "Describe the job you are ultimately building toward.", sub: "What should it have that your current role does not? What would make you feel like you made it?", type: "textarea", placeholder: "Your real north star...", optional: false },
+  { id: "sa_influence", section: "selfassess", text: "Influencing without authority. Getting things done when you are not the decision-maker.", sub: "", type: "scale4", scaleLeft: "Real weakness", scaleRight: "Genuine strength", scaleDescs: ["Weakness", "Developing", "Solid", "Strength"] },
+  { id: "sa_managing_up", section: "selfassess", text: "Navigating upward. Your manager, senior stakeholders, C-level.", sub: "", type: "scale4", scaleLeft: "Real weakness", scaleRight: "Genuine strength", scaleDescs: ["Weakness", "Developing", "Solid", "Strength"] },
+  { id: "sa_exec_comm", section: "selfassess", text: "Speaking the language of leadership. Strategic, concise, outcome-focused.", sub: "", type: "scale4", scaleLeft: "Real weakness", scaleRight: "Genuine strength", scaleDescs: ["Weakness", "Developing", "Solid", "Strength"] },
+  { id: "sa_delegation", section: "selfassess", text: "Delegating. Letting go without losing accountability for results.", sub: "", type: "scale4", scaleLeft: "Real weakness", scaleRight: "Genuine strength", scaleDescs: ["Weakness", "Developing", "Solid", "Strength"] },
+  { id: "sa_network", section: "selfassess", text: "Building and activating your internal network. Being known by the right people.", sub: "", type: "scale4", scaleLeft: "Real weakness", scaleRight: "Genuine strength", scaleDescs: ["Weakness", "Developing", "Solid", "Strength"] },
+  { id: "three_words_self", section: "selfassess", text: "Three words for your strengths as a leader. Three words for your weaknesses.", sub: "First words that come to mind. Do not overthink it.", type: "threewords", groups: ["Your strengths", "Your weaknesses"] },
+  { id: "three_words_org", section: "selfassess", text: "Now, your organization. Three words that describe what works. Three that describe what does not.", sub: "Be honest. This stays between us.", type: "threewords", groups: ["What works", "What does not work"] },
+  { id: "personal", section: "personal", text: "One last thing. Outside of work.", sub: "What gives you energy? And is there anything in your personal life right now that affects how you show up? You do not need to share details. Even naming it helps.", type: "textarea", placeholder: "Optional. Only what you are comfortable sharing.", optional: true },
+  { id: "worth_it", section: "closing", text: "At the end of our work together, what would make you say: this was worth it?", sub: "Not just a title or a raise. How you show up. How you feel. How others see you.", type: "textarea", placeholder: "Your real definition of success here...", optional: false }
 ];
 
 let currentIndex = -1;
@@ -955,7 +466,6 @@ function checkNameInputs() {
 function startQuestionnaire() {
   respondentName.first = document.getElementById('inputFirstName').value.trim();
   respondentName.last = document.getElementById('inputLastName').value.trim();
-
   document.getElementById('screen-welcome').classList.remove('active');
   setTimeout(() => {
     document.getElementById('screen-welcome').style.display = 'none';
@@ -969,11 +479,8 @@ function showQuestion(index) {
   const q = questions[index];
   currentIndex = index;
 
-  const progress = (index / questions.length) * 100;
-  document.getElementById('progressBar').style.width = progress + '%';
-  // FIX: always show question number
+  document.getElementById('progressBar').style.width = (index / questions.length * 100) + '%';
   document.getElementById('stepCounter').textContent = (index + 1) + ' / ' + questions.length;
-
   document.getElementById('qSection').textContent = SECTIONS[q.section] || q.section;
   document.getElementById('qText').textContent = q.text;
   document.getElementById('qSub').textContent = q.sub || '';
@@ -990,13 +497,9 @@ function showQuestion(index) {
   }
   confEl.style.display = sensitiveIds.includes(q.id) ? 'inline-flex' : 'none';
 
-  document.getElementById('btnNext').textContent = 'Continue →';
-
-  // Back button: hide on first question
+  document.getElementById('btnNext').textContent = 'Continue \u2192';
   document.getElementById('btnBack').style.display = index === 0 ? 'none' : 'inline-flex';
-
-  const skipBtn = document.getElementById('btnSkip');
-  skipBtn.style.display = q.optional ? 'block' : 'none';
+  document.getElementById('btnSkip').style.display = q.optional ? 'block' : 'none';
 
   const answerDiv = document.getElementById('qAnswer');
   answerDiv.innerHTML = '';
@@ -1004,16 +507,16 @@ function showQuestion(index) {
   if (q.type === 'choice') {
     const div = document.createElement('div');
     div.className = 'choices';
-    const keys = ['A','B','C','D','E','F'];
-    q.choices.forEach((choice, i) => {
+    ['A','B','C','D','E','F'].forEach((key, i) => {
+      if (i >= q.choices.length) return;
       const btn = document.createElement('button');
       btn.className = 'choice';
-      btn.innerHTML = `<span class="choice-key">${keys[i]}</span>${choice}`;
-      if (answers[q.id] === choice) btn.classList.add('selected');
+      btn.innerHTML = '<span class="choice-key">' + key + '</span>' + q.choices[i];
+      if (answers[q.id] === q.choices[i]) btn.classList.add('selected');
       btn.onclick = () => {
         div.querySelectorAll('.choice').forEach(b => b.classList.remove('selected'));
         btn.classList.add('selected');
-        answers[q.id] = choice;
+        answers[q.id] = q.choices[i];
         document.getElementById('btnNext').disabled = false;
       };
       div.appendChild(btn);
@@ -1038,9 +541,8 @@ function showQuestion(index) {
     const wrap = document.createElement('div');
     const labels = document.createElement('div');
     labels.className = 'scale-labels';
-    labels.innerHTML = `<span>${q.scaleLeft}</span><span>${q.scaleRight}</span>`;
+    labels.innerHTML = '<span>' + q.scaleLeft + '</span><span>' + q.scaleRight + '</span>';
     wrap.appendChild(labels);
-
     const opts = document.createElement('div');
     opts.className = 'scale-options';
     [1,2,3,4].forEach(n => {
@@ -1058,18 +560,12 @@ function showQuestion(index) {
       opts.appendChild(btn);
     });
     wrap.appendChild(opts);
-
     if (q.scaleDescs) {
       const descs = document.createElement('div');
       descs.className = 'scale-desc';
-      q.scaleDescs.forEach(d => {
-        const s = document.createElement('span');
-        s.textContent = d;
-        descs.appendChild(s);
-      });
+      q.scaleDescs.forEach(d => { const s = document.createElement('span'); s.textContent = d; descs.appendChild(s); });
       wrap.appendChild(descs);
     }
-
     answerDiv.appendChild(wrap);
     document.getElementById('btnNext').disabled = !answers[q.id];
 
@@ -1077,6 +573,9 @@ function showQuestion(index) {
     const selected = answers[q.id] || [];
     const cloud = document.createElement('div');
     cloud.className = 'word-cloud';
+    const hint = document.createElement('p');
+    hint.className = 'word-cloud-hint';
+    hint.textContent = selected.length + ' / ' + q.maxSelect + ' selected';
     q.words.forEach(word => {
       const tag = document.createElement('button');
       tag.className = 'word-tag';
@@ -1085,26 +584,19 @@ function showQuestion(index) {
       if (selected.length >= q.maxSelect && !selected.includes(word)) tag.classList.add('disabled');
       tag.onclick = () => {
         const curr = answers[q.id] || [];
-        if (curr.includes(word)) {
-          answers[q.id] = curr.filter(w => w !== word);
-        } else if (curr.length < q.maxSelect) {
-          answers[q.id] = [...curr, word];
-        }
+        if (curr.includes(word)) { answers[q.id] = curr.filter(w => w !== word); }
+        else if (curr.length < q.maxSelect) { answers[q.id] = [...curr, word]; }
         cloud.querySelectorAll('.word-tag').forEach(t => {
-          const w = t.textContent;
           const sel = answers[q.id] || [];
-          t.classList.toggle('selected', sel.includes(w));
-          t.classList.toggle('disabled', sel.length >= q.maxSelect && !sel.includes(w));
+          t.classList.toggle('selected', sel.includes(t.textContent));
+          t.classList.toggle('disabled', sel.length >= q.maxSelect && !sel.includes(t.textContent));
         });
         document.getElementById('btnNext').disabled = (answers[q.id] || []).length < q.maxSelect;
-        hint.textContent = `${(answers[q.id]||[]).length} / ${q.maxSelect} selected`;
+        hint.textContent = (answers[q.id] || []).length + ' / ' + q.maxSelect + ' selected';
       };
       cloud.appendChild(tag);
     });
     answerDiv.appendChild(cloud);
-    const hint = document.createElement('p');
-    hint.className = 'word-cloud-hint';
-    hint.textContent = `${selected.length} / ${q.maxSelect} selected`;
     answerDiv.appendChild(hint);
     document.getElementById('btnNext').disabled = selected.length < q.maxSelect;
 
@@ -1113,8 +605,8 @@ function showQuestion(index) {
     div.className = 'transition-screen';
     answerDiv.appendChild(div);
     document.getElementById('btnNext').disabled = false;
-    document.getElementById('btnNext').textContent = "Let's go →";
-    skipBtn.style.display = 'none';
+    document.getElementById('btnNext').textContent = "Let's go \u2192";
+    document.getElementById('btnSkip').style.display = 'none';
 
   } else if (q.type === 'threewords') {
     q.groups.forEach(group => {
@@ -1131,7 +623,7 @@ function showQuestion(index) {
         const input = document.createElement('input');
         input.type = 'text';
         input.className = 'word-input';
-        input.placeholder = `Word ${i+1}`;
+        input.placeholder = 'Word ' + (i+1);
         input.value = saved[i] || '';
         input.oninput = () => {
           if (!answers[q.id]) answers[q.id] = {};
@@ -1146,20 +638,14 @@ function showQuestion(index) {
       answerDiv.appendChild(groupDiv);
     });
     function checkThreeWords() {
-      const allFilled = q.groups.every(g => {
-        const vals = (answers[q.id] || {})[g] || [];
-        return vals.filter(v => v.trim()).length >= 2;
-      });
+      const allFilled = q.groups.every(g => ((answers[q.id] || {})[g] || []).filter(v => v.trim()).length >= 2);
       document.getElementById('btnNext').disabled = !allFilled;
     }
     checkThreeWords();
   }
 
-  // Animate in
   card.classList.remove('active', 'exit');
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => card.classList.add('active'));
-  });
+  requestAnimationFrame(() => requestAnimationFrame(() => card.classList.add('active')));
 }
 
 function nextQuestion() {
@@ -1167,11 +653,8 @@ function nextQuestion() {
   card.classList.add('exit');
   setTimeout(() => {
     card.classList.remove('active', 'exit');
-    if (currentIndex + 1 >= questions.length) {
-      showEnd();
-    } else {
-      showQuestion(currentIndex + 1);
-    }
+    if (currentIndex + 1 >= questions.length) { showEnd(); }
+    else { showQuestion(currentIndex + 1); }
   }, 300);
 }
 
@@ -1179,27 +662,27 @@ function prevQuestion() {
   if (currentIndex <= 0) return;
   const card = document.getElementById('questionCard');
   card.classList.add('exit');
-  setTimeout(() => {
-    card.classList.remove('active', 'exit');
-    showQuestion(currentIndex - 1);
-  }, 300);
+  setTimeout(() => { card.classList.remove('active', 'exit'); showQuestion(currentIndex - 1); }, 300);
 }
 
-function skipQuestion() {
-  nextQuestion();
-}
+function skipQuestion() { nextQuestion(); }
 
 function showEnd() {
+  const now = new Date();
+  const dateStr = now.getFullYear() + '-' + String(now.getMonth()+1).padStart(2,'0') + '-' + String(now.getDate()).padStart(2,'0');
+
   const payload = {
+    date: dateStr,
     respondent_first_name: respondentName.first,
     respondent_last_name: respondentName.last
   };
+
   questions.forEach(q => {
     if (!answers[q.id]) return;
     const val = answers[q.id];
     if (typeof val === 'object' && !Array.isArray(val)) {
       Object.keys(val).forEach(group => {
-        payload[`${q.id} - ${group}`] = (val[group] || []).filter(v => v).join(', ');
+        payload[q.id + ' - ' + group] = (val[group] || []).filter(v => v).join(', ');
       });
     } else if (Array.isArray(val)) {
       payload[q.id] = val.join(', ');
@@ -1222,26 +705,19 @@ function showEnd() {
   setTimeout(() => end.classList.add('active'), 50);
 }
 
-// Keyboard navigation
 document.addEventListener('keydown', (e) => {
   if (currentIndex < 0) return;
   const q = questions[currentIndex];
-
   if (q && q.type === 'choice') {
-    const keys = ['a','b','c','d','e','f'];
-    const idx = keys.indexOf(e.key.toLowerCase());
+    const idx = ['a','b','c','d','e','f'].indexOf(e.key.toLowerCase());
     if (idx >= 0 && idx < q.choices.length) {
-      const choiceBtns = document.querySelectorAll('.choice');
-      if (choiceBtns[idx]) choiceBtns[idx].click();
+      const btns = document.querySelectorAll('.choice');
+      if (btns[idx]) btns[idx].click();
     }
   }
-
   if (e.key === 'Enter' && !e.shiftKey) {
     const btn = document.getElementById('btnNext');
-    if (btn && !btn.disabled && document.activeElement.tagName !== 'TEXTAREA') {
-      e.preventDefault();
-      nextQuestion();
-    }
+    if (btn && !btn.disabled && document.activeElement.tagName !== 'TEXTAREA') { e.preventDefault(); nextQuestion(); }
   }
 });
 </script>
