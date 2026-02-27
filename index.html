@@ -1080,6 +1080,29 @@ function skipQuestion() {
 }
 
 function showEnd() {
+  // Submit to Formspree
+  const payload = {};
+  questions.forEach(q => {
+    if (!answers[q.id]) return;
+    const val = answers[q.id];
+    if (typeof val === 'object' && !Array.isArray(val)) {
+      // threewords groups
+      Object.keys(val).forEach(group => {
+        payload[`${q.id} — ${group}`] = (val[group] || []).filter(v => v).join(', ');
+      });
+    } else if (Array.isArray(val)) {
+      payload[q.id] = val.join(', ');
+    } else {
+      payload[q.id] = val;
+    }
+  });
+
+  fetch('https://formspree.io/f/xkovewaj', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+    body: JSON.stringify(payload)
+  }).catch(() => {}); // silent fail — don't block UX
+
   document.getElementById('questionCard').style.display = 'none';
   document.getElementById('progressBar').style.width = '100%';
   document.getElementById('stepCounter').textContent = '';
